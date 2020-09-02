@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueMoment from 'vue-moment';
-import Books from '../components/Books.vue';
+import SPU from '../components/SPU.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueMoment);
@@ -9,8 +9,8 @@ Vue.use(VueMoment);
 const routes = [
   {
     path: '/',
-    name: 'Books',
-    component: Books,
+    name: 'SPU',
+    component: SPU,
   },
 ];
 
