@@ -5,7 +5,6 @@
 </template>
 
 <style>
-<style>
 #app {
   margin-top: 60px
 }

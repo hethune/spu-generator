@@ -1,22 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Ping from '../components/Ping.vue';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueMoment from 'vue-moment';
 import Books from '../components/Books.vue';
+
+Vue.use(VueRouter);
+Vue.use(VueMoment);
 
 const routes = [
   {
-    path: '/ping',
-    name: 'Ping',
-    component: Ping,
-  },
-  {
-    path: '/books',
+    path: '/',
     name: 'Books',
     component: Books,
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes,
 });
 
