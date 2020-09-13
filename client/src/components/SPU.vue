@@ -79,8 +79,8 @@ export default {
   },
   methods: {
     getSPUCount() {
-      const path = 'http://localhost:5000/spu_count';
-      axios.get(path)
+      console.log(process.env.VUE_APP_backend_url);
+      axios.get(process.env.VUE_APP_backend_url)
         .then((res) => {
           this.spu_count = res.data.spu_count;
           this.addSPUForm.seq = this.spu_count + 1;
@@ -91,8 +91,7 @@ export default {
         });
     },
     addSPU(payload) {
-      const path = 'http://localhost:5000/spu_count';
-      axios.post(path, payload)
+      axios.post(process.env.VUE_APP_backend_url, payload)
         .then((response) => {
           console.log(response);
           this.spu = response.data.spu;
