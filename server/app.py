@@ -34,7 +34,7 @@ def spu_count():
     else:
       total_spus = int(post_data['seq'])
     redis_client.set('total_spus', total_spus)
-    spu = "{}{}{:03d}{}".format(post_data['prefix'], post_data['date'], total_spus % 1000, post_data['category'])
+    spu = "{}-{}{:03d}{}".format(post_data['prefix'], post_data['date'], total_spus % 1000, post_data['category'].upper())
     response_object['spu_count'] = total_spus
     response_object['spu'] = spu
   else:
