@@ -28,13 +28,13 @@
           <b-form-group id="form-category-group"
                         label="Category:"
                         label-for="form-category-input">
-            <b-form-input id="form-date-input"
-                          type="text"
-                          v-model="addSPUForm.category"
-                          required
-                          placeholder="Category">
-            </b-form-input>
-          </b-form-group>
+            <b-form-select id="form-date-input"
+                           v-model="addSPUForm.category"
+                           required
+                           :options="options">
+            </b-form-select>
+         </b-form-group>
+
           <b-form-group id="form-seq-group"
                         label="Sequence:"
                         label-for="form-sequence-input">
@@ -75,6 +75,23 @@ export default {
         seq: 0,
       },
       spu: '',
+      options: [
+        { text: 'T-Shirt', value: 'SH' },
+        { text: 'Blouse ', value: 'BL' },
+        { text: 'Matching Set ', value: 'ST' },
+        { text: 'Tank top ', value: 'TT' },
+        { text: 'Dress', value: 'DR' },
+        { text: 'Jumpsuit ', value: 'JS' },
+        { text: 'Sweatshirt ', value: 'SS' },
+        { text: 'Sweater', value: 'SW' },
+        { text: 'Blazer/Jacket', value: 'BZ' },
+        { text: 'Skirt', value: 'SK' },
+        { text: 'Pants', value: 'PA' },
+        { text: 'Shorts ', value: 'SR' },
+        { text: 'Denim', value: 'DN' },
+        { text: 'Activewear ', value: 'AC' },
+        { text: 'Coat/大衣', value: 'CT' },
+      ],
     };
   },
   methods: {
