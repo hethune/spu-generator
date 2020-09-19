@@ -45,7 +45,7 @@
                           placeholder="seq">
             </b-form-input>
           </b-form-group>
-          <b-alert show>{{ spu }}</b-alert>
+          <b-alert variant="success" show>{{ spu }}</b-alert>
          <!--  <b-form-group id="form-read-group">
             <b-form-checkbox-group v-model="addBookForm.read" id="form-checks">
               <b-form-checkbox value="true">Read?</b-form-checkbox>
