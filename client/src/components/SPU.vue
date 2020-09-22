@@ -91,6 +91,7 @@ export default {
         { text: 'Denim', value: 'DN' },
         { text: 'Activewear ', value: 'AC' },
         { text: 'Coat/大衣', value: 'CT' },
+        { text: 'Accessories', value: 'AS' },
       ],
     };
   },
