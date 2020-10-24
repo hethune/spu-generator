@@ -30,15 +30,18 @@ def spu_count():
   if request.method == 'POST':
     post_data = request.get_json()
     if int(post_data['seq']) <= total_spus:
-      total_spus += 1
+      repeated = True
     else:
-      total_spus = int(post_data['seq'])
-    redis_client.set('total_spus', total_spus)
-    spu = "{}-{}{:03d}{}".format(post_data['prefix'], post_data['date'], total_spus % 1000, post_data['category'].upper())
+      repeated = False
+    spu = "{}{}{:04d}{}".format(post_data['prefix'], post_data['date'], int(post_data['seq']) % 10000, post_data['category'].upper())
     response_object['spu_count'] = total_spus
     response_object['spu'] = spu
+    response_object['repeated'] = repeated
+    total_spus = max(int(post_data['seq']), total_spus+1)
+    redis_client.set('total_spus', total_spus)
   else:
     response_object['spu_count'] = total_spus
+
 
   return jsonify(response_object)
 

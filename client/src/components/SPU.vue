@@ -46,6 +46,9 @@
             </b-form-input>
           </b-form-group>
           <b-alert variant="success" show>{{ spu }}</b-alert>
+          <b-alert show v-if="repeated == true">
+            Caution! Generated with a used sequence number!
+          </b-alert>
          <!--  <b-form-group id="form-read-group">
             <b-form-checkbox-group v-model="addBookForm.read" id="form-checks">
               <b-form-checkbox value="true">Read?</b-form-checkbox>
@@ -55,6 +58,7 @@
         </b-form>
         <br><br>
         Total SPU Genrated: {{spu_count}}
+
       </div>
     </div>
   </div>
@@ -75,23 +79,30 @@ export default {
         seq: 0,
       },
       spu: '',
+      repeated: false,
       options: [
-        { text: 'T-Shirt', value: 'SH' },
-        { text: 'Blouse ', value: 'BL' },
-        { text: 'Matching Set ', value: 'ST' },
-        { text: 'Tank top ', value: 'TT' },
-        { text: 'Dress', value: 'DR' },
-        { text: 'Jumpsuit ', value: 'JS' },
-        { text: 'Sweatshirt ', value: 'SS' },
-        { text: 'Sweater', value: 'SW' },
-        { text: 'Blazer/Jacket', value: 'BZ' },
-        { text: 'Skirt', value: 'SK' },
-        { text: 'Pants', value: 'PA' },
-        { text: 'Shorts ', value: 'SR' },
-        { text: 'Denim', value: 'DN' },
-        { text: 'Activewear ', value: 'AC' },
-        { text: 'Coat/大衣', value: 'CT' },
-        { text: 'Accessories', value: 'AS' },
+        { text: '外套', value: 'OT' },
+        { text: 'T', value: 'SH' },
+        { text: '衬衣', value: 'BL' },
+        { text: '毛织', value: 'SW' },
+        { text: '半裙', value: 'SK' },
+        { text: '裤子 ', value: 'PA' },
+        { text: '运动套装 ', value: 'PS' },
+        { text: '运动套装上装', value: 'PST' },
+        { text: '运动套装下装', value: 'PSB' },
+        { text: '内衣套装', value: 'BS' },
+        { text: '内衣套装上装', value: 'BST' },
+        { text: '内衣套装下装', value: 'BSB' },
+        { text: '家居服套装', value: 'LS' },
+        { text: '家居服套装上装 ', value: 'LST' },
+        { text: '家居服套装下装', value: 'LSB' },
+        { text: '上下套装', value: 'OS' },
+        { text: '上下套装上装', value: 'OST' },
+        { text: '上下套装下装', value: 'OSB' },
+        { text: '牛仔', value: 'DN' },
+        { text: '连衣裙 ', value: 'DR' },
+        { text: '连衣裤', value: 'JS' },
+        { text: '配饰', value: 'AS' },
       ],
     };
   },
@@ -113,6 +124,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.spu = response.data.spu;
+          this.repeated = response.data.repeated;
           this.getSPUCount();
         })
         .catch((error) => {
